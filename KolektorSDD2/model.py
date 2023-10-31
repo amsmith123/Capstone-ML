@@ -1,6 +1,7 @@
 import tensorflow as tf
 from keras import layers
 import os
+import cv2
 
 # Define a simple CNN for binary classification
 def create_classification_model(input_shape):
