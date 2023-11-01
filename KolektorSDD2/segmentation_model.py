@@ -37,6 +37,7 @@ def dice_loss(y_true, y_pred):
     return 1 - (numerator + 1) / (denominator + 1)
 
 
+# Load images from data folder and sort into images and ground truths (gt)
 def load_images(folder_path):
     image_list = []
     gt_list = []
@@ -77,6 +78,7 @@ def load_images(folder_path):
     return image_list, gt_list, filename_to_index
 
 
+# Function to load labels from python binary (.pyb) file
 def load_pyb(file_path):
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
@@ -94,8 +96,6 @@ def prepare_dataset(images, gt, split_info, filename_to_index):
             #resize images and append to image array
             image = images[actual_index]
             resized_image = cv2.resize(image, (640, 240))
-            # resized_image = np.expand_dims(resized_image, axis=0)  # Adds an extra dimension at the beginning
-
             gt_image = gt[actual_index]
             resized_gt = cv2.resize(gt_image, (640, 240))
             resized_gt = np.expand_dims(resized_gt, axis=0) 
@@ -111,7 +111,7 @@ def prepare_dataset(images, gt, split_info, filename_to_index):
     
     # Create a TensorFlow dataset
     dataset = tf.data.Dataset.from_tensor_slices((selected_images, selected_gt))
-    # dataset = dataset.map(lambda x, y: (x / 255.0, y / 255.0))  # Normalize to [0,1]
+    # Normalize to [0,1]
     dataset = dataset.map(lambda x, y: (tf.cast(x, tf.float32) / 255.0, tf.cast(y, tf.float32) / 255.0))
     dataset = dataset.batch(32)  # Add batching
     return dataset
