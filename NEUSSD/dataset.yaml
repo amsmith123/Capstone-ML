@@ -1,0 +1,18 @@
+# Define dataset root directory
+path: C:/Users/AMSX3/Desktop/School Work/Capstone/ML/ML_Testing/NEUSSD/Data/
+# Define training and validation data paths
+train: images/train
+val: images/val
+
+# Define number of classes
+nc: 6
+
+# Define class names
+names: [
+    'crazing', 
+    'inclusion', 
+    'patches',
+    'pitted_surface',
+    'rolled-in_scale',
+    'scratches'
+]
