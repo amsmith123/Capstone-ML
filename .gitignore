@@ -1,2 +1,4 @@
-KolektorSDD2/venv/*
+/venv
 KolektorSDD2/classification_model.py
+KolektorSDD2/Archive
+KolektorSDD2/__pycache__
