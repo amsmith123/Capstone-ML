@@ -2,6 +2,11 @@
 Testing various machine learning models to detect surface defects using various public datasets.
 (In Progress)
 
+Dependencies:
+Ultralytics
+
+> `pip install ultralytics`
+
 Dataset 1: NEU surface-defect-database
 
 https://www.kaggle.com/datasets/rdsunday/neu-urface-defect-database
